@@ -1,10 +1,13 @@
 package com.yoondev.boardproject.service;
 
 import com.yoondev.boardproject.domain.Article;
+import com.yoondev.boardproject.domain.UserAccount;
 import com.yoondev.boardproject.domain.type.SearchType;
 import com.yoondev.boardproject.dto.ArticleDto;
 import com.yoondev.boardproject.dto.ArticleWithCommentsDto;
+import com.yoondev.boardproject.dto.UserAccountDto;
 import com.yoondev.boardproject.repository.ArticleRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,6 +21,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 import static org.mockito.BDDMockito.*;
 
 @DisplayName("비즈니스 로직 - 게시글")

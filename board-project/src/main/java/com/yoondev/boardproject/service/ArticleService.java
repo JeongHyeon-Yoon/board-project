@@ -2,6 +2,7 @@ package com.yoondev.boardproject.service;
 
 import com.yoondev.boardproject.domain.type.SearchType;
 import com.yoondev.boardproject.dto.ArticleDto;
+import com.yoondev.boardproject.dto.ArticleWithCommentsDto;
 import com.yoondev.boardproject.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -22,7 +23,7 @@ public class ArticleService {
     }
 
     @Transactional(readOnly = true)
-    public ArticleDto searchArticle(Long articleId) {
+    public ArticleWithCommentsDto getArticle(Long articleId) {
         return null;
     }
 
@@ -34,4 +35,5 @@ public class ArticleService {
 
     public void deleteArticle(long articleId) {
     }
+
 }
