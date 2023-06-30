@@ -8,7 +8,7 @@ import lombok.ToString;
 import java.util.Objects;
 
 @Getter
-@ToString
+@ToString(callSuper = true)
 @Table(indexes = {
         @Index(columnList = "userId"),
         @Index(columnList = "email", unique = true),
@@ -23,6 +23,7 @@ public class UserAccount extends AuditingFields {
 
     @Setter
     @Column(nullable = false, length = 50) private String userId;
+
     @Setter @Column(nullable = false) private String userPassword;
 
     @Setter @Column(length = 100) private String email;
