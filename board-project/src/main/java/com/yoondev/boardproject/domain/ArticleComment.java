@@ -27,6 +27,10 @@ public class ArticleComment extends AuditingFields {
     private Long id;
 
     @Setter
+    @ManyToOne(optional = false)
+    private Article article;
+
+    @Setter
     @JoinColumn(name = "userId")
     @ManyToOne(optional = false)
     private UserAccount userAccount; // 유저 정보 (ID)
@@ -59,4 +63,5 @@ public class ArticleComment extends AuditingFields {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }
