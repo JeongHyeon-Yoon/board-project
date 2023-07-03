@@ -23,7 +23,6 @@ import java.util.Set;
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
 })
-
 @Entity
 public class Article extends AuditingFields{
     @Id
@@ -31,6 +30,11 @@ public class Article extends AuditingFields{
     private Long id;
 
     @Setter @ManyToOne(optional = false)
+    private UserAccount userAccount; // 유저 정보 (ID)
+
+    @Setter
+    @JoinColumn(name = "userId")
+    @ManyToOne(optional = false)
     private UserAccount userAccount; // 유저 정보 (ID)
 
     @Setter
@@ -46,7 +50,6 @@ public class Article extends AuditingFields{
 
     @OrderBy("createdAt DESC")
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
-    @ToString.Exclude
     private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
 
 
@@ -60,7 +63,7 @@ public class Article extends AuditingFields{
     }
 
     public static Article of(UserAccount userAccount, String title, String content, String hashtag) {
-        return new Article(userAccount, title, content, hashtag);
+        return  new Article(userAccount, title, content, hashtag);
     }
 
     @Override
