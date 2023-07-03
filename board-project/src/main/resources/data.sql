@@ -128,8 +128,6 @@ insert into article (user_id, title, content, hashtag, created_by, created_at, m
 
 
 -- ArticleComment 500
-
-
 insert into article_comment (article_id, user_id, content, created_by, created_at, modified_by, modified_at) values (20, 1, 'Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.', 'Ashia', '2022-12-21 01:50:21', 'Nadia', '2023-04-03 14:33:32');
 insert into article_comment (article_id, user_id, content, created_by, created_at, modified_by, modified_at) values (9, 1, 'Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.', 'Dallas', '2022-07-25 14:49:24', 'Rikki', '2023-01-08 03:24:43');
 insert into article_comment (article_id, user_id, content, created_by, created_at, modified_by, modified_at) values (93, 1, 'Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.', 'Allayne', '2023-02-07 12:59:08', 'Dallas', '2023-03-20 04:11:34');
@@ -630,3 +628,4 @@ insert into article_comment (article_id, user_id, content, created_by, created_a
 insert into article_comment (article_id, user_id, content, created_by, created_at, modified_by, modified_at) values (77, 1, 'Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.', 'Melisandra', '2022-09-28 13:04:00', 'Drusilla', '2022-11-13 23:27:28');
 insert into article_comment (article_id, user_id, content, created_by, created_at, modified_by, modified_at) values (65, 1, 'Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.', 'Linette', '2023-02-21 15:41:08', 'Alejandro', '2023-01-16 03:36:38');
 insert into article_comment (article_id, user_id, content, created_by, created_at, modified_by, modified_at) values (76, 1, 'Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.', 'Devinne', '2023-03-09 05:31:37', 'Westbrooke', '2023-04-11 13:41:52');
+
