@@ -28,7 +28,7 @@ public class ArticleController {
     private final PaginationService paginationService;
 
     @GetMapping
-    public  String articles(
+    public String articles(
             @RequestParam(required = false) SearchType searchType,
             @RequestParam(required = false) String searchValue,
             @PageableDefault(size = 10, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable,
@@ -41,11 +41,14 @@ public class ArticleController {
 
         return "articles/index";
     }
+
     @GetMapping("/{articleId}")
-    public  String article(@PathVariable Long articleId, ModelMap map) {
+    public String article(@PathVariable Long articleId, ModelMap map) {
         ArticleWithCommentsResponse article = ArticleWithCommentsResponse.from(articleService.getArticle(articleId));
+
         map.addAttribute("article", article);
         map.addAttribute("articleComments", article.articleCommentsResponse());
+        map.addAttribute("totalCount", articleService.getArticleCount());
 
         return "articles/detail";
     }
