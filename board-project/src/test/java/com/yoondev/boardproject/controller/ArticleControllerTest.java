@@ -1,10 +1,12 @@
 package com.yoondev.boardproject.controller;
 
 import com.yoondev.boardproject.config.SecurityConfig;
+import com.yoondev.boardproject.domain.type.SearchType;
 import com.yoondev.boardproject.dto.ArticleWithCommentsDto;
 import com.yoondev.boardproject.dto.UserAccountDto;
 import com.yoondev.boardproject.service.ArticleService;
 import com.yoondev.boardproject.service.PaginationService;
+import io.micrometer.core.instrument.search.Search;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -60,9 +62,33 @@ class ArticleControllerTest {
         then(paginationService).should().getPaginationBarNumber(anyInt(), anyInt());
     }
 
+    @DisplayName("[view][GET] 게시글 리스트 (게시판) 페이지 - 검색 호출")
+    @Test
+    public void givenSearchKeyword_whenSearchingArticlesView_thenReturnsArticlesView() throws Exception {
+        // Given
+        SearchType searchType = SearchType.TITLE;
+        String searchValue = "title";
+        given(articleService.searchArticles(eq(searchType), eq(searchValue), any(Pageable.class))).willReturn(Page.empty());
+        given(paginationService.getPaginationBarNumber(anyInt(), anyInt())).willReturn(List.of(0, 1, 2, 3, 4));
+
+        // When & Then
+        mvc.perform(get("/articles")
+                        .queryParam("searchType", searchType.name())
+                        .queryParam("searchValue", searchValue)
+                )
+
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
+                .andExpect(view().name("articles/index"))
+                .andExpect(model().attributeExists("articles"))
+                .andExpect(model().attributeExists("searchTypes"));
+        then(articleService).should().searchArticles(eq(searchType), eq(searchValue), any(Pageable.class));
+        then(paginationService).should().getPaginationBarNumber(anyInt(), anyInt());
+    }
+
     @DisplayName("[view][Get] 게시글 리스트 (게시판) 페이지 - 페이징, 정렬 기능")
     @Test
-    public void givenPagingAndSortingParams_whenSearchingArticlePage_thenReturnsArticle() throws Exception {
+    public void givenPagingAndSortingParams_whenSearchingArticleView_thenReturnsArticle() throws Exception {
         // Given
         String sortName = "title";
         String direction = "desc";
