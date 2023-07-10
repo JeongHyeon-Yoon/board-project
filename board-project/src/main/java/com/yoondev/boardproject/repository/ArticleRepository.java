@@ -5,6 +5,7 @@ import com.querydsl.core.types.dsl.SimpleExpression;
 import com.querydsl.core.types.dsl.StringExpression;
 import com.yoondev.boardproject.domain.Article;
 import com.yoondev.boardproject.domain.QArticle;
+import com.yoondev.boardproject.repository.querydsl.ArticleRepositoryCustom;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
@@ -16,6 +17,7 @@ import org.springframework.data.domain.Page;
 
 public interface ArticleRepository extends
         JpaRepository<Article, Long>,
+        ArticleRepositoryCustom,
         QuerydslPredicateExecutor<Article>,
         QuerydslBinderCustomizer<QArticle>
 {
