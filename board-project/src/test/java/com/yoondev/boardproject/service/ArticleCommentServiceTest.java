@@ -3,9 +3,7 @@ package com.yoondev.boardproject.service;
 import com.yoondev.boardproject.domain.Article;
 import com.yoondev.boardproject.domain.ArticleComment;
 import com.yoondev.boardproject.domain.UserAccount;
-import com.yoondev.boardproject.domain.type.SearchType;
 import com.yoondev.boardproject.dto.ArticleCommentDto;
-import com.yoondev.boardproject.dto.ArticleDto;
 import com.yoondev.boardproject.dto.UserAccountDto;
 import com.yoondev.boardproject.repository.ArticleCommentRepository;
 import com.yoondev.boardproject.repository.ArticleRepository;
@@ -16,14 +14,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.data.domain.Page;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.*;
 import static org.mockito.BDDMockito.then;
