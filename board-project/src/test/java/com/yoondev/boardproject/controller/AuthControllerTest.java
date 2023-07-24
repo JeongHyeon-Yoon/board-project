@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @DisplayName("View 컨트롤러 - 인증")
 @Import(SecurityConfig.class)
-@WebMvcTest(Void.class)
+@WebMvcTest
 public class AuthControllerTest {
 
     private final MockMvc mvc;
@@ -29,9 +29,10 @@ public class AuthControllerTest {
     @Test
     public void givenNothing_whenTryToLogin_thenReturnsLoginView() throws Exception {
         // Given
+
+        // When & THEN
         mvc.perform(get("/login"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
-                .andDo(MockMvcResultHandlers.print());
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML));
     }
 }
