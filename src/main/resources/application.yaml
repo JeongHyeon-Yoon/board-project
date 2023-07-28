@@ -46,7 +46,7 @@ spring:
   config:
     activate:
       on-profile: heroku
-  datasource: ${CLEARDB_DATABASE_URL}
+  datasource: ${JAWSDB_URL}
   jpa:
     hibernate:
       ddl-auto: create
